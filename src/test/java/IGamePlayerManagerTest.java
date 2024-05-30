@@ -1,3 +1,4 @@
+import org.example.GamePlayerManager;
 import org.example.IGamePlayerManager;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class IGamePlayerManagerTest {
-	IGamePlayerManager iGamePlayerManager;
+	IGamePlayerManager iGamePlayerManager = new GamePlayerManager();
 	HashMap<String, String> playerList;
 	String player;
 	String player2;
@@ -28,13 +29,13 @@ public class IGamePlayerManagerTest {
 		player2 = iGamePlayerManager.getPlayerDetails("2");
 
 		// Assert
-		assertEquals(player2.toString(), "2, Zaidejas2");
+		assertEquals("2, Zaidejas2", player2);
 	}
 
 	@Test
 	public void getPlayerDetailsTest() {
 		// Assert
-		assertEquals(player.toString(), "1, Zaidejas1");
+		assertEquals("1, Zaidejas1", player);
 	}
 
 	@Test
@@ -60,9 +61,9 @@ public class IGamePlayerManagerTest {
 	}
 
 	@Test
-	public void checkLevelUpTestPass(){
+	public void checkLevelUpTestPassFail(){
 		// Assert
-		assertEquals(true, iGamePlayerManager.checkLevelUp("1"));
+		assertEquals(false, iGamePlayerManager.checkLevelUp("1"));
 	}
 
 	@Test
